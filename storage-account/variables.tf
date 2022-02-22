@@ -41,3 +41,11 @@ variable "firewall_virtual_network_subnet_ids" {
 variable "firewall_bypass" {
   default = ["None"]
 }
+
+variable "private_dns_zone_ids_blob" {
+  default = []
+}
+
+variable "private_dns_zone_ids_dfs" {
+  default = []
+}

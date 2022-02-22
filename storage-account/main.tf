@@ -54,31 +54,31 @@ resource "azurerm_storage_account_network_rules" "firewall_rules" {
 
 # DNS Zones
 
-resource "azurerm_private_dns_zone" "st_zone_blob" {
-  name                = "privatelink.blob.core.windows.net"
-  resource_group_name = var.rg_name
-}
+# resource "azurerm_private_dns_zone" "st_zone_blob" {
+#   name                = "privatelink.blob.core.windows.net"
+#   resource_group_name = var.rg_name
+# }
 
-resource "azurerm_private_dns_zone" "st_zone_dfs" {
-  name                = "privatelink.dfs.core.windows.net"
-  resource_group_name = var.rg_name
-}
+# resource "azurerm_private_dns_zone" "st_zone_dfs" {
+#   name                = "privatelink.dfs.core.windows.net"
+#   resource_group_name = var.rg_name
+# }
 
 # Linking of DNS zones to Virtual Network
 
-resource "azurerm_private_dns_zone_virtual_network_link" "st_zone_blob_link" {
-  name                  = "${var.postfix}_link_blob"
-  resource_group_name   = var.rg_name
-  private_dns_zone_name = azurerm_private_dns_zone.st_zone_blob.name
-  virtual_network_id    = var.vnet_id
-}
+# resource "azurerm_private_dns_zone_virtual_network_link" "st_zone_blob_link" {
+#   name                  = "${var.postfix}_link_blob"
+#   resource_group_name   = var.rg_name
+#   private_dns_zone_name = azurerm_private_dns_zone.st_zone_blob.name
+#   virtual_network_id    = var.vnet_id
+# }
 
-resource "azurerm_private_dns_zone_virtual_network_link" "st_zone_dfs_link" {
-  name                  = "${var.postfix}_link_dfs"
-  resource_group_name   = var.rg_name
-  private_dns_zone_name = azurerm_private_dns_zone.st_zone_dfs.name
-  virtual_network_id    = var.vnet_id
-}
+# resource "azurerm_private_dns_zone_virtual_network_link" "st_zone_dfs_link" {
+#   name                  = "${var.postfix}_link_dfs"
+#   resource_group_name   = var.rg_name
+#   private_dns_zone_name = azurerm_private_dns_zone.st_zone_dfs.name
+#   virtual_network_id    = var.vnet_id
+# }
 
 # Private Endpoint configuration
 
@@ -97,7 +97,7 @@ resource "azurerm_private_endpoint" "st_pe_blob" {
 
   private_dns_zone_group {
     name                 = "private-dns-zone-group-blob"
-    private_dns_zone_ids = [azurerm_private_dns_zone.st_zone_blob.id]
+    private_dns_zone_ids = var.private_dns_zone_ids_blob
   }
 }
 
@@ -116,6 +116,6 @@ resource "azurerm_private_endpoint" "st_pe_dfs" {
 
   private_dns_zone_group {
     name                 = "private-dns-zone-group-dfs"
-    private_dns_zone_ids = [azurerm_private_dns_zone.st_zone_dfs.id]
+    private_dns_zone_ids = var.private_dns_zone_ids_dfs
   }
 }
