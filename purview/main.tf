@@ -19,7 +19,6 @@ resource "azurerm_private_dns_zone" "studio_zone" {
   resource_group_name = var.rg_name
 }
 
-
 # Linking of DNS zones to Virtual Network
 
 resource "azurerm_private_dns_zone_virtual_network_link" "purview_zone_link" {
