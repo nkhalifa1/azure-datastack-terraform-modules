@@ -11,7 +11,7 @@ resource "azurerm_cognitive_account" "syn_cog" {
   sku_name              = "S0"
   custom_subdomain_name = "cog-${var.prefix}-${var.postfix}"
 
-  public_network_access_enabled     = true
+  public_network_access_enabled     = false
   outbound_network_access_restrited = false
 
   #   network_acls {
