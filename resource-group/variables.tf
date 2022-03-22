@@ -1,13 +1,7 @@
-variable "name" {
-  type        = string
-  default     = "syn-terraform-demo01"
-  description = "Resource group name"
-}
-
 variable "location" {
   type        = string
   default     = "North Europe"
-  description = "Location of the resource group"
+  description = "Location of the Resource Group"
 }
 
 variable "prefix" {
@@ -18,4 +12,10 @@ variable "prefix" {
 variable "postfix" {
   type        = string
   description = "Postfix for the module name"
+}
+
+variable "tags" {
+  type        = map(string)
+  default     = {}
+  description = "A mapping of tags which should be assigned to the Resource Group"
 }
