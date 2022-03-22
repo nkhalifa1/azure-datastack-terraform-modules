@@ -5,6 +5,8 @@ resource "azurerm_purview_account" "syn_pview" {
 
   public_network_enabled      = false
   managed_resource_group_name = "${var.rg_name}-pview-managed"
+
+  tags = var.tags
 }
 
 # DNS Zones
