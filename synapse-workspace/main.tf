@@ -170,7 +170,7 @@ resource "null_resource" "azurecli_syn_approve_pe_adf_01" {
 
   provisioner "local-exec" {
 
-    interpreter = ["/bin/bash", "-c"]
+    interpreter = ["bash", "-c"]
     working_dir = path.module
 
     # https://github.com/Azure/azure-cli/issues/13573
@@ -195,7 +195,7 @@ resource "null_resource" "azurecli_syn_approve_pe_kv_01" {
 
   provisioner "local-exec" {
 
-    interpreter = ["/bin/bash", "-c"]
+    interpreter = ["bash", "-c"]
     working_dir = path.module
 
     # https://github.com/Azure/azure-cli/issues/13573
